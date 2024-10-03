@@ -1,11 +1,14 @@
-FROM golang:latest
+FROM golang:1.20
 
-# 將 entrypoint.sh 複製到容器中
+# Set working directory
+WORKDIR /app
+
+# Install OpenFGA CLI
+RUN go install github.com/openfga/cli/cmd/fga@latest
+
+# Copy entrypoint script
 COPY entrypoint.sh /entrypoint.sh
-
-# 設置執行權限
 RUN chmod +x /entrypoint.sh
 
-# 設置 entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 
