@@ -1,0 +1,13 @@
+name: "Install OpenFGA CLI"
+description: "A GitHub Action to install OpenFGA CLI"
+inputs:
+  version:
+    description: "Version of OpenFGA CLI to install"
+    required: false
+    default: "latest"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.version }}
+
